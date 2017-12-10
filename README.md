@@ -129,3 +129,12 @@ These are contributions that would be ignored or removed.
   problem, not upfront.
 
 * Solutions to kattis problems. No.. Just no...
+
+
+## Acknowledgments
+
+This repo uses the kattis submit script, which is under an MIT License.
+
+Please see
+[here](https://github.com/Kattis/kattis-cli/blob/master/LICENSE) for
+repo and license
