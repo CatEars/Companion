@@ -16,7 +16,7 @@ exist. When the script is run it creates copies a template to the
 folder and creates a markdown file. We can also see that the sample
 data was downloaded.
 
-![Kattis Open running example](docs/img/open.webm)
+![Kattis Open running example](./img/open.webm)
 
 This script can also take a third argument, which can be either `cpp`
 or `py` and copy the corresponding template into the opened problem.

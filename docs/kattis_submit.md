@@ -8,7 +8,7 @@ Below is a video showing how it the script is used. It first shows the
 solution to the complicated problem `carrots`. Then it uses the submit
 script and shows the result on `open.kattis.com`.
 
-![Kattis Submit Example Usage](docs/img/submit.webm)
+![Kattis Submit Example Usage](./img/submit.webm)
 
 Example usage:
 

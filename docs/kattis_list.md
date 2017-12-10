@@ -7,4 +7,4 @@ depending on problem being solved or not.
 A problem is solved if the problem folder contains the hidden file
 `.solved`.
 
-![Kattis Problem Listing](docs/img/kattis_listing.png)
+![Kattis Problem Listing](./img/kattis_listing.png)

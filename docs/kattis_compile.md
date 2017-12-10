@@ -10,7 +10,7 @@ This script is mainly used for debugging single programs.
 In the webm you can see a sample use case where the problem
 `kastenlauf` is compiled and then run manually.
 
-![Kattis Compile running example](docs/img/compile.webm)
+![Kattis Compile running example](./img/compile.webm)
 
 C++ example usage:
 
