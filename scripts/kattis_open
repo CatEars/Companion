@@ -1,0 +1,51 @@
+#!/usr/bin/env python3
+import os
+import shutil
+import sys
+import zipfile
+
+if len(sys.argv) not in [2, 3]:
+    print("Usage: ./kattis_open problemname [language]")
+    print("The language is cpp by default and can be either 'cpp' or 'py'")
+    exit(0)
+
+language = 'cpp'
+if len(sys.argv) == 3 and sys.argv[2] == "py":
+    language = 'py'
+
+problemname = sys.argv[1]
+problem_dir = os.path.join('kattis', problemname)
+problem_path = os.path.join('kattis', problemname, '{}.{}'.format(problemname, language))
+problem_solution = os.path.join('kattis', problemname, '{}.md'.format(problemname))
+problem_test = os.path.join('tests', problemname)
+
+try:
+    os.mkdir(problem_dir)
+except FileExistsError:
+    print("'{}' already exists, are you sure you want to create it?".format(problemname))
+    exit(1)
+
+try:
+    os.mkdir(problem_test)
+except FileExistsError:
+    print("Test folder already exists")
+
+shutil.copyfile(os.path.join('library', 'template.{}'.format(language)), problem_path)
+with open(problem_solution, 'w') as f:
+    print("# Problem Type", file=f)
+    print("", file=f)
+    print("# Proposed solution", file=f)
+    print("", file=f)
+    print("## Solution complexity", file=f)
+print("'{}' was successfully opened, time to get solving!".format(problemname))
+
+sample_url = 'https://open.kattis.com/problems/{}/file/statement/samples.zip'
+url = sample_url.format(problemname)
+
+# For some reason python http lib gets 403 forbidden ??? Just use wget instead -.-
+os.system('wget -q {}'.format(url))
+local_zip = 'samples.zip'
+f = zipfile.ZipFile(local_zip)
+f.extractall(problem_test)
+os.remove(local_zip)
+print("Samples fetched from kattis and put into tests folder")

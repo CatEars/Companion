@@ -1,0 +1,43 @@
+#!/usr/bin/env python3
+import os
+
+RED = '\x1b[38;5;1m'
+GREEN = '\x1b[38;5;2m'
+NULL = '\x1b[0m'
+
+problems = list(filter(lambda x: os.path.isdir(os.path.join('kattis', x)), os.listdir('kattis')))
+problems = list(filter(lambda x: not x == '.git', problems))
+
+solved = []
+nonsolved = []
+
+for problem_dir in sorted(problems):
+    path = os.path.join('kattis', problem_dir, '.solved')
+    if os.path.isfile(path):
+        solved.append(problem_dir.rstrip())
+    else:
+        nonsolved.append(problem_dir.rstrip())
+
+
+_, columns = os.popen("stty size").read().split()
+
+SIZE_LIMIT = int(columns)
+buff = GREEN
+for solution in solved:
+    if len(buff) + 30 > SIZE_LIMIT:
+        print(buff, NULL)
+        buff = GREEN
+    column = "✔ - {}".format(solution)
+    buff += "{:<30}".format(column)
+if buff:
+    print(buff, NULL)
+print()
+buff = RED
+for solution in nonsolved:
+    if len(buff) + 30 > SIZE_LIMIT:
+        print(buff, NULL)
+        buff = RED
+    column = "✖ - {}".format(solution)
+    buff += "{:<30}".format(column)
+if buff:
+    print(buff, NULL)

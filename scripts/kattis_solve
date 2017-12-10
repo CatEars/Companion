@@ -1,0 +1,10 @@
+#!/usr/bin/env python3
+import os
+import sys
+
+if len(sys.argv) != 2:
+    print("Usage: ./scripts/kattis_solve problemname")
+    exit(0)
+
+with open(os.path.join('kattis', sys.argv[1], '.solved'), 'w') as f:
+    print("y", file=f)

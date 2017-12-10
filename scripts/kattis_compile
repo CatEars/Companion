@@ -1,0 +1,35 @@
+#!/usr/bin/env python
+import shutil
+import sys
+import os
+
+if (len(sys.argv)) != 2:
+    print("Not enough arguments")
+    exit(0)
+
+problemname = sys.argv[1]
+problem_dir = os.path.join('kattis', problemname)
+
+is_python = os.path.isfile(os.path.join(problem_dir, '{}.py'.format(problemname)))
+is_cpp = os.path.isfile(os.path.join(problem_dir, '{}.cpp'.format(problemname)))
+
+try:
+    os.mkdir('compiled')
+except OSError:
+    pass
+
+if is_cpp:
+    CC = 'g++ -std=c++14 -O2 -Wall -pedantic -o compiled/{} -I{}'.format(problemname, problem_dir)
+    os.system('{} {}'.format(CC, os.path.join(problem_dir, '{}.cpp'.format(problemname))))
+
+    print("run ./compiled/{} to run the program".format(problemname))
+
+elif is_python:
+    def is_py_file(fname):
+        return fname.lower().endswith('.py')
+    def make_path(directory, fname):
+        return os.path.join(directory, fname)
+    files = list(filter(is_py_file, os.listdir(problem_dir)))
+    for f in files:
+        shutil.copy(make_path(problem_dir, f), make_path('compiled', f))
+    print('Copied files to compiled/ run "python compiled/{}.py" to run the program'.format(problemname))
