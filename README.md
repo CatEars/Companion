@@ -27,6 +27,32 @@ find it on that site.
 The submit script uses `requests` to submit so you will need to
 install this by running `sudo -H pip install requests`.
 
+If you have access to `virtualenv` then you can use to install
+`requests` locally, you don't need super user permissions in that
+case. I won't go into detail how that works here tough.
+
+# Quick Start
+
+Assuming you have setup correctly this is an example of how you could
+use the application.
+
+```
+$ pwd
+~/Companion
+$ ./scripts/kattis_open hello                      # Open a new problem
+'hello' was successfully opened, time to get solving!
+Samples fetched from kattis and put into tests folder
+$ ls kattis/hello                                  # Look at the files it created
+hello.cpp  hello.md
+$ sed -i -e 's/xkcd/reference/g' kattis/hello.cpp  # edit the file
+...
+$ ./scripts/kattis_submit hello                    # Test it against the downloaded data
+✔ - AC
+$ ./scripts/kattis_submit hello                    # Submit to Kattis
+Submission received. Submission ID: 1337337.
+... Open kattis in web browser and check for AC/WA/TLE/RE ...
+```
+
 # Contributing
 
 Since this is open source and I do not have an infinite amount of time
