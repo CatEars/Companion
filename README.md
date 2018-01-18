@@ -46,7 +46,7 @@ $ ls kattis/hello                                  # Look at the files it create
 hello.cpp  hello.md
 $ sed -i -e 's/xkcd/reference/g' kattis/hello.cpp  # edit the file
 ...
-$ ./scripts/kattis_submit hello                    # Test it against the downloaded data
+$ ./scripts/kattis_test hello                      # Test it against the downloaded data
 ✔ - AC
 $ ./scripts/kattis_submit hello                    # Submit to Kattis
 Submission received. Submission ID: 1337337.
