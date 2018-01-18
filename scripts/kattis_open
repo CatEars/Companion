@@ -5,7 +5,7 @@ import sys
 import zipfile
 
 if len(sys.argv) not in [2, 3]:
-    print("Usage: ./kattis_open problemname [language]")
+    print("Usage: ./scripts/kattis_open problemname [language]")
     print("The language is cpp by default and can be either 'cpp' or 'py'")
     exit(0)
 
@@ -44,8 +44,12 @@ url = sample_url.format(problemname)
 
 # For some reason python http lib gets 403 forbidden ??? Just use wget instead -.-
 os.system('wget -q {}'.format(url))
-local_zip = 'samples.zip'
-f = zipfile.ZipFile(local_zip)
-f.extractall(problem_test)
-os.remove(local_zip)
-print("Samples fetched from kattis and put into tests folder")
+try:
+    local_zip = 'samples.zip'
+    f = zipfile.ZipFile(local_zip)
+    f.extractall(problem_test)
+    os.remove(local_zip)
+    print("Samples fetched from kattis and put into tests folder")
+except:
+    print('Could not download sample input.' \
+          + ' Perhaps none exist on Kattis or you do not have internet connection?')
