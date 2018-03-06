@@ -157,6 +157,17 @@ These are contributions that would be ignored or removed.
 * Solutions to kattis problems. No.. Just no...
 
 
+## On Mac?
+
+[@holmgr](https://github.com/holmgr) pointed out that the
+`<bits/stdc++.h>` include does not work on MacOS and posted a solution
+to that problem in
+[Issue #2](https://github.com/CatEars/Companion/issues/2).
+
+Alternatively you can create your own template file, with custom
+includes.
+
+
 ## Acknowledgments
 
 This repo uses the kattis submit script, which is under an MIT License.
